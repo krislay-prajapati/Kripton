@@ -11,7 +11,7 @@ import {
 
 import {Globe, GitBranch} from 'lucide-react';
 import {signIn} from 'next-auth/react';
-
+// checkout the next-auth documentation for more information on how to use the signIn function
 async function handleGoogleSignIn() {
     "use server";
     await signIn("google")
