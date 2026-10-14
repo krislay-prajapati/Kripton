@@ -13,11 +13,41 @@ datasource db {
  
 }
 
+
+enum UserRole {
+  USER
+  ADMIN
+  PREMIUM_USER
+}
+
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(cuid()) @map("_id") @db.ObjectId
   email     String   @unique
   name      String?
+  image     String?
+  accounts  Accounnt[]
+
+  role      UserRole @default(USER)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Accounnt {
+  id                 String   @id @default(cuid()) @map("_id") 
+  userId             String   @map("user_Id") 
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String? @map("refresh_token") 
+  access_token       String? @map("access_token")
+  expires_at         Int? @map("expires_at")
+  token_type         String? @map("token_type")
+  scope              String?
+  id_token           String?  @map("id_token")
+  session_state      String? @map("session_state")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
