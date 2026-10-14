@@ -22,7 +22,7 @@ async function handleGitHubSignIn() {
     await signIn("github")
 }
 
-
+// "use client";
 
 const SignInFormClient = () => {
   return (
