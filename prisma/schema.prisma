@@ -7,10 +7,6 @@ generator client {
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
-
-
-  
- 
 }
 
 
@@ -21,11 +17,12 @@ enum UserRole {
 }
 
 model User {
-  id        String   @id @default(cuid()) @map("_id") @db.ObjectId
-  email     String   @unique
-  name      String?
-  image     String?
-  accounts  Accounnt[]
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  email         String?   @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+  accounts      Account[]
 
   role      UserRole @default(USER)
 
@@ -33,21 +30,22 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
-model Accounnt {
-  id                 String   @id @default(cuid()) @map("_id") 
-  userId             String   @map("user_Id") 
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String? @map("refresh_token") 
-  access_token       String? @map("access_token")
-  expires_at         Int? @map("expires_at")
-  token_type         String? @map("token_type")
-  scope              String?
-  id_token           String?  @map("id_token")
-  session_state      String? @map("session_state")
+model Account {
+  id                String  @id @default(cuid()) @map("_id")
+  userId            String  @map("user_id") @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @map("refresh_token")
+  access_token      String? @map("access_token")
+  expires_at        Int?    @map("expires_at")
+  token_type        String? @map("token_type")
+  scope             String?
+  id_token          String? @map("id_token")
+  session_state     String? @map("session_state")
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }

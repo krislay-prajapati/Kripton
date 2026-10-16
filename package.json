@@ -13,7 +13,7 @@
     "@auth/prisma-adapter": "^2.11.3",
     "@base-ui/react": "^1.9.0",
     "@phosphor-icons/react": "^2.1.10",
-    "@prisma/client": "^7.10.0",
+    "@prisma/client": "^6.19.3",
     "@shadcn/react": "^0.3.1",
     "class-variance-authority": "^0.7.1",
     "cmdk": "^1.1.1",
@@ -39,7 +39,7 @@
     "dotenv": "^18.0.7",
     "eslint": "8.57.1",
     "eslint-config-next": "14.2.35",
-    "prisma": "^8.0.0-rc.22",
+    "prisma": "^6.19.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

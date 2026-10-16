@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import {Button} from '@/components/ui/button';
 import {
@@ -11,18 +12,6 @@ import {
 
 import {Globe, GitBranch} from 'lucide-react';
 import {signIn} from 'next-auth/react';
-// checkout the next-auth documentation for more information on how to use the signIn function
-async function handleGoogleSignIn() {
-    "use server";
-    await signIn("google")
-
-}
-async function handleGitHubSignIn() {
-    "use server";
-    await signIn("github")
-}
-
-// "use client";
 
 const SignInFormClient = () => {
   return (
@@ -35,18 +24,14 @@ const SignInFormClient = () => {
         </CardHeader>
 
         <CardContent className="grid gap-3 px-6 pb-6">
-            <form action={handleGoogleSignIn}>
-                <Button className="w-full" type="submit" variant="outline">
+            <Button className="w-full" type="button" variant="outline" onClick={() => signIn("google")}>
                     <Globe className="mr-2 size-4" />
                     <span>Sign in with Chrome</span>
-                </Button>
-            </form>
-            <form action={handleGitHubSignIn}>
-                <Button className="w-full" type="submit" variant="outline">
+            </Button>
+            <Button className="w-full" type="button" variant="outline" onClick={() => signIn("github")}>
                     <GitBranch className="mr-2 size-4" />
                     <span>Sign in with GitHub</span>
-                </Button>
-            </form>
+            </Button>
         </CardContent>
 
         <CardFooter className="justify-center px-6 pb-6 pt-0">

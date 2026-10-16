@@ -1,4 +1,4 @@
-"user server";
+
 
 import {auth} from "@/auth";
 import {db} from "@/lib/db";
@@ -27,7 +27,7 @@ export const getUserById = async (Id: string) => {
 
     export const getAccountByUserId = async (userId: string) => {
         try{
-            const account = await db.accounnt.findFirst({
+            const account = await db.account.findFirst({
                 where:{userId:userId}
             })
             return account;
