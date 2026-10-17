@@ -1,5 +1,5 @@
 import { Header } from "@/features/home/components/header";
-import Footer from "@/features/home/components/footer";
+import{ Footer} from "@/features/home/components/footer";
 import React from "react";
 
 export default function HomeLayout({
