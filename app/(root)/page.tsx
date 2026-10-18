@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+//front page
+
 export default function Home() {
   return (
     <div className="z-20 flex flex-col items-center justify-start min-h-screen py-2 mt-10">

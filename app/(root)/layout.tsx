@@ -2,6 +2,8 @@ import { Header } from "@/features/home/components/header";
 import{ Footer} from "@/features/home/components/footer";
 import React from "react";
 
+//layout of hearder main and footer section 
+
 export default function HomeLayout({
   children,
 }: {
